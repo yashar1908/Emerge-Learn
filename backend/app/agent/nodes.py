@@ -2,6 +2,9 @@ import os
 from langchain_groq import ChatGroq
 from langchain_core.messages import AIMessage
 from .state import AgentState
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Initialize the LLM outside the function so it's only created once.
 # It automatically looks for GROQ_API_KEY in your environment variables.
