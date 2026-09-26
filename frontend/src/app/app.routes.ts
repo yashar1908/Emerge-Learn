@@ -20,6 +20,12 @@ export const routes: Routes = [
         .then(m => m.Dashboard)
   },
   {
+  path: 'assistant',
+  loadComponent: () =>
+    import('./feature/ai-assistant/ai-assistant')
+      .then(m => m.AiAssistant)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

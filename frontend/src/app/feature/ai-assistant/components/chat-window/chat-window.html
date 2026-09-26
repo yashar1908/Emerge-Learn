@@ -1,0 +1,154 @@
+<div class="chat-shell">
+
+  <header class="chat-header">
+    <div class="assistant-identity">
+      <div class="assistant-orb">
+        <span></span>
+      </div>
+
+      <div class="assistant-copy">
+        <h1>Emerge</h1>
+        <span>Your learning companion</span>
+      </div>
+    </div>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      Ready to learn
+    </div>
+  </header>
+
+
+  <main class="chat-content">
+
+    @if (messages.length === 0) {
+
+      <section class="welcome-state">
+
+        <div class="welcome-orb">
+          <div class="orb-core"></div>
+          <div class="orb-ring ring-one"></div>
+          <div class="orb-ring ring-two"></div>
+        </div>
+
+        <p class="eyebrow">LEARN DIFFERENTLY</p>
+
+        <h2>
+          What are you
+          <span>curious</span> about?
+        </h2>
+
+        <p class="welcome-description">
+          Ask me anything you're learning. I'll explain it,
+          break it down, or help you think through it —
+          at your pace.
+        </p>
+
+        <div class="suggestions">
+
+          <button
+            class="suggestion-card"
+            type="button"
+            (click)="messageInput = 'Explain a concept to me'"
+          >
+            <span class="suggestion-icon">✦</span>
+
+            <span>
+              <strong>Explain a concept</strong>
+              <small>Make something difficult easier to understand</small>
+            </span>
+          </button>
+
+          <button
+            class="suggestion-card"
+            type="button"
+            (click)="messageInput = 'Help me understand something I am stuck on'"
+          >
+            <span class="suggestion-icon">⌁</span>
+
+            <span>
+              <strong>Help me understand</strong>
+              <small>Work through something I'm stuck on</small>
+            </span>
+          </button>
+
+          <button
+            class="suggestion-card"
+            type="button"
+            (click)="messageInput = 'Test my knowledge'"
+          >
+            <span class="suggestion-icon">◇</span>
+
+            <span>
+              <strong>Test my knowledge</strong>
+              <small>Challenge me on something I've learned</small>
+            </span>
+          </button>
+
+        </div>
+
+      </section>
+
+    }
+
+
+    @if (messages.length > 0) {
+
+      <section class="messages">
+
+        @for (message of messages; track $index) {
+
+          <div
+            class="message"
+            [class.user-message]="message.role === 'user'"
+            [class.ai-message]="message.role === 'assistant'"
+          >
+
+            <div class="message-label">
+              {{ message.role === 'user' ? 'You' : 'Emerge' }}
+            </div>
+
+            <div class="message-bubble">
+              {{ message.content }}
+            </div>
+
+          </div>
+
+        }
+
+      </section>
+
+    }
+
+  </main>
+
+
+  <footer class="chat-input-area">
+
+    <div class="input-wrapper">
+
+      <textarea
+        [(ngModel)]="messageInput"
+        placeholder="Ask Emerge anything..."
+        rows="1"
+        (keydown.enter)="sendMessage()"
+      ></textarea>
+
+      <button
+        class="send-button"
+        type="button"
+        aria-label="Send message"
+        (click)="sendMessage()"
+      >
+        <span>↑</span>
+      </button>
+
+    </div>
+
+    <p class="input-hint">
+      Emerge adapts its explanations to help you understand, not just remember.
+    </p>
+
+  </footer>
+
+</div>
