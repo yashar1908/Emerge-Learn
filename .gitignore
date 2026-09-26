@@ -7,3 +7,9 @@ node_modules/
 dist/
 .venv/
 venv/
+coverage/       # Angular test coverage
+*.log           # application/npm logs
+.idea/          # JetBrains IDE files
+.vscode/*       # VS Code local configuration
+.DS_Store       # macOS junk
+Thumbs.db       # Windows junk

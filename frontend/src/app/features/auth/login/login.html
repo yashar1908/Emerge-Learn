@@ -1,0 +1,109 @@
+<main class="login-page">
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <section class="login-shell">
+
+    <button
+      class="brand"
+      type="button"
+      (click)="goToLanding()"
+      aria-label="Return to Emerge home"
+    >
+      <span class="brand-mark">E</span>
+      <span class="brand-name">emerge</span>
+    </button>
+
+    <div class="login-content">
+
+      <div class="intro">
+        <p class="eyebrow">WELCOME BACK</p>
+
+        <h1>
+          Continue
+          <span>your journey.</span>
+        </h1>
+
+        <p class="subtitle">
+          Learning that evolves with you.
+        </p>
+      </div>
+
+      <form
+        class="login-form"
+        (ngSubmit)="login()"
+      >
+
+        <div class="field">
+          <label for="email">Email</label>
+
+          <input
+            id="email"
+            name="email"
+            type="email"
+            [(ngModel)]="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            [disabled]="isLoading()"
+          />
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="password">Password</label>
+
+            <button
+              type="button"
+              class="forgot-password"
+            >
+              Forgot password?
+            </button>
+          </div>
+
+          <input
+            id="password"
+            name="password"
+            type="password"
+            [(ngModel)]="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            [disabled]="isLoading()"
+          />
+        </div>
+
+        @if (errorMessage()) {
+          <div class="error-message">
+            {{ errorMessage() }}
+          </div>
+        }
+
+        <button
+          class="login-button"
+          type="submit"
+          [disabled]="isLoading()"
+        >
+          @if (isLoading()) {
+            <span class="loader"></span>
+            Signing you in...
+          } @else {
+            Continue
+            <span class="arrow">→</span>
+          }
+        </button>
+
+      </form>
+
+      <p class="demo-hint">
+        Demo access is currently enabled for this preview.
+      </p>
+
+    </div>
+
+    <p class="footer-note">
+      © 2026 Emerge Learn
+    </p>
+
+  </section>
+
+</main>
