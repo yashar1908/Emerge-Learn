@@ -195,3 +195,17 @@ A learning system should understand that difference and adapt accordingly.
 ---
 
 **Built to explore what personalized learning can look like when AI becomes an active part of the learning process.**
+
+
+### Running the project
+Backend:
+```
+cd backend
+uvicorn app.main:app --reload
+```
+
+Frontend:
+```
+cd frontend
+npm start
+```
